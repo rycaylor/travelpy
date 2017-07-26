@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="{% url 'travel:index' %}">Home</a>
+    <a href="{% url 'login:logout' %}">Logout</a>
+    <h1>{{trip.destination}}</h1>
+    {% for user in users %}
+    {% if user == trip.maker %}
+      <h4>Planned by: {{user.first_name}}</h4>
+    {% endif %}
+    {% endfor %}
+      <h4>Description: {{trip.description}}</h4>
+      <h4>Travel Date From: {{trip.date_start}}</h4>
+      <h4>Travel Date To: {{trip.date_end}}</h4>
+
+
+      <h2>Other User's Going</h2>
+      {% for user in users %}
+      {% if user in trip.joining.all %}
+      <h2>{{user.first_name}}</h2>
+      {% endif %}
+      {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Register</h1>
+    {% if messages %}
+    {% for message in messages %}
+    <h3 style="color:red">{{message}}</h3>
+    {% endfor %}
+    {% endif %}
+    <form class="reg" action="{% url 'login:reg' %}" method="post">
+      {% csrf_token %}
+      <h3>First Name:</h3>
+      <input type="text" name="first" placeholder="First Name"value="">
+
+      <h3>Last Name</h3>
+      <input type="text" name="last" placeholder="Last Name" value="">
+
+      <h3>UserName</h3>
+      <input type="text" name="username" placeholder="rcaylor" value="">
+
+      <h3>Password</h3>
+      <h6>Password Must Be 8 Characters</h6>
+      <input type="password" name="pass1" value="">
+
+      <h3>Confirm Password</h3>
+      <input type="password" name="pass2" value="">
+
+      <input type="submit" name="" value="Register">
+
+    </form>
+
+    <h1>Login</h1>
+
+    <form class="log" action="{% url 'login:login' %}" method="post">
+      {% csrf_token %}
+      <h3>Username</h3>
+      <input type="text" name="usernameTest"  placeholder="rcaylor" value="">
+
+      <h3>Password</h3>
+      <input type="password" name="passTest"  placeholder="Password" value="">
+      <input type="submit" name="" value="Login">
+    </form>
+
+
+  </body>
+</html>
